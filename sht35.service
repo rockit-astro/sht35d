@@ -1,0 +1,15 @@
+[Unit]
+Description=Daemon for exposing an attached SHT35 sensor via Pyro.
+After=syslog.target
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Restart=on-failure
+Type=simple
+ExecStart=/usr/bin/env python3.6 -u /usr/bin/sht35d
+ExecStartPost=/usr/bin/env python3.6 -u /usr/bin/obslog info rasa_sht35d Started by systemd
+ExecStopPost=/usr/bin/env python3.6 -u /usr/bin/obslog info rasa_sht35d Stopped by systemd
+StandardOutput=syslog
+StandardError=syslog
+
