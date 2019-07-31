@@ -57,8 +57,6 @@ def print_status():
                                                 latest['temperature_valid'], '\u00B0C'))
         print(' Rel. Humidity: ' + format_value(latest['relative_humidity'],
                                                 latest['relative_humidity_valid'], ' %RH'))
-        print('Temp. > DewPt.: ' + format_value(latest['dew_point_delta'],
-                                                latest['dew_point_delta_valid'], '\u00B0C'))
         print()
     else:
         print('error: no data available')

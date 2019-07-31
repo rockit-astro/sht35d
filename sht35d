@@ -32,14 +32,6 @@ import smbus
 from warwick.observatory.common import daemons, log
 
 
-def dew_point(temperature, humidity):
-    """Calculates the dew point using the equation defined by the Vaisala manual"""
-    a = math.log(100 / humidity)
-    b = 15 * a - 2.1 * temperature + 2711.5
-    c = temperature + 273.16
-    return c * b / (c * a / 2 + b) - 273.16
-
-
 def crc(data):
     val = 0xff
     for s in data:
@@ -107,9 +99,7 @@ class SHT35Daemon:
                             'temperature': round(temperature, 1),
                             'temperature_valid': temperature_valid,
                             'relative_humidity': round(humidity, 1),
-                            'relative_humidity_valid': humidity_valid,
-                            'dew_point_delta': round(dew_point(temperature, humidity), 1),
-                            'dew_point_delta_valid': temperature_valid and humidity_valid
+                            'relative_humidity_valid': humidity_valid
                         }
 
             except Exception as exception:
