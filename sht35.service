@@ -7,7 +7,7 @@ After=network-online.target
 [Service]
 Restart=on-failure
 Type=simple
-ExecStart=/usr/bin/env python3.5 -u /usr/local/bin/sht35d
+ExecStart=/usr/bin/env python3.7 -u /usr/local/bin/sht35d
 StandardOutput=syslog
 StandardError=syslog
 
